@@ -9,7 +9,10 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public');
 
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  //res.setHeader("Access-Control-Allow-Origin", "*"); //will allow access to resources from any site.
+  //lock it down to only your site web server (front end), by changing the start
+  res.setHeader("Access-Control-Allow-Origin", "https://security-site.herokuapp.com")
+  res.setHeader("Vary", "Origin"); //this is required for values other then *
   return next();
 });
 app.use(express.static('files'));
