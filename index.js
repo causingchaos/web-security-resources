@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public');
 
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "https://[[SITE]]");
+  res.setHeader("Access-Control-Allow-Origin", "https://security-resources.herokuapp.com/");
   res.setHeader("Vary", "Origin");
   return next();
 });
