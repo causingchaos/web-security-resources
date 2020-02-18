@@ -9,6 +9,11 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public');
 
 //
+app.use(function(req,res,next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  return next();
+})
+
 app.use(express.static('files'));
 
 app.listen(app.get('port'), function () {
