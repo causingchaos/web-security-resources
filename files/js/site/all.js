@@ -557,15 +557,15 @@
     if (window.opener) {
       //using the '*' only during dev
       //window.opener.postMessage('ready','*');
-      window.opener.postMessage('ready','https://security-site.herokuapp.com')
+      window.opener.postMessage('ready','https://security-site.herokuapp.com');
     }
   });
 
   //event listener so both windows are listeing for messages
   window.addEventListener('message', function(e){
-    this.console.log(e.data);
+    console.log(e.data);
     if (e.data === 'ready'){
-      e.sources.postMessage('Two-way communication established','https://security-resources.herokuapp.com' )
+      e.source.postMessage('Two-way communication established','https://security-resources.herokuapp.com' )
     }
   });
 
