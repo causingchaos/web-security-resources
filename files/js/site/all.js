@@ -565,7 +565,7 @@
   window.addEventListener('message', function(e){
     //do not open unless origin is safe, i.e. our site server/assets server
     if ((e.origin !== 'https://security-resources.herokuapp.com') &&
-        (e.origin !== 'https://security-site.herokuapp.com') {
+        (e.origin !== 'https://security-site.herokuapp.com')) {
           return;
         }
     
