@@ -557,7 +557,7 @@
     if (window.opener) {
       //using the '*' only during dev
       //window.opener.postMessage('ready','*');
-      window.opener.postMessage('ready','https://security-resources.herokuapp.com')
+      window.opener.postMessage('ready','https://security-site.herokuapp.com')
     }
   });
 
