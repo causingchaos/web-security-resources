@@ -546,6 +546,7 @@
     }
   };
   //sharing data with other windows sandbox.
+  //this is loading this script on index.html on our site-server
   $('#roses').on('click', function(e) {
     e.preventDefault();
     window.open('https://security-resources.herokuapp.com/pages/product-detail-arrangements.html')
@@ -554,7 +555,9 @@
   //send a message back to the original page from the one that opened.
   window.addEventListener('DOMContentLoaded', function() {
     if (window.opener) {
-      window.opener.postMessage('ready','*');
+      //using the '*' only during dev
+      //window.opener.postMessage('ready','*');
+      window.opener.postMessage('ready','https://security-resources.herokuapp.com')
     }
   });
 
