@@ -564,6 +564,9 @@
   //event listener so both windows are listeing for messages
   window.addEventListener('message', function(e){
     this.console.log(e.data);
+    if (e.data === 'ready'){
+      e.sources.postMessage('Two-way communication established','https://security-resources.herokuapp.com/' )
+    }
   });
 
 
