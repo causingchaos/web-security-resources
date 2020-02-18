@@ -563,11 +563,31 @@
 
   //event listener so both windows are listeing for messages
   window.addEventListener('message', function(e){
+    //do not open unless origin is safe, i.e. our site server/assets server
+    if ((e.origin !== 'https://security-resources.herokuapp.com') &&
+        (e.origin !== 'https://security-site.herokuapp.com') {
+          return;
+        }
+    
     console.log(e.data);
     if (e.data === 'ready'){
-      e.source.postMessage('Two-way communication established','https://security-resources.herokuapp.com' )
+      e.source.postMessage('Two-way communication established','https://security-resources.herokuapp.com' );
+      return;
     }
+    if (e.data.request === 'favorite') {
+      //access class, and add fave which has css for highlighting
+      $('#' + e.data.data).addClass('fave');
+    }
+
   });
 
+  //in the new window, i.e. https://security-resources.herokuapp.com/pages/product-detail-arrangements.html, send a message when the user clicks on the favorite button
+  $('.fave').on('click', function(e) {
+    e.preventDefault();
+    window.opener.postMessage({
+      data: $(this).data('prod'),
+      request: 'favorite',
+    }, 'https://security-site.herokuapp.com')
+  })
 
 })();
