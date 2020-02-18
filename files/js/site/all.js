@@ -545,4 +545,23 @@
       });
     }
   };
+  //sharing data with other windows sandbox.
+  $('#roses').on('click', function(e) {
+    e.preventDefault();
+    window.open('https://security-resources.herokuapp.com/pages/product-detail-arrangements.html')
+  });
+
+  //send a message back to the original page from the one that opened.
+  window.addEventListener('DOMContentLoaded', function() {
+    if (window.opener) {
+      window.opener.postMessage('ready','*');
+    }
+  });
+
+  //event listener so both windows are listeing for messages
+  window.addEventListener('message', function(e){
+    this.console.log(e.data);
+  });
+
+
 })();
